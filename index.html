@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profil Mahasiswa - Kevin Risky Brilianto</title>
+  <style>
+    :root{
+      --bg:#0a031f;
+      --card:#1a103d;
+      --accent:#8b5cf6;
+      --accent2:#6366f1;
+      --text:#f3f4f6;
+      --muted:#a1a1aa;
+      --border:#312e81;
+      --radius:14px;
+      font-family:'Poppins','Segoe UI',sans-serif;
+    }
+
+    body{
+      margin:0;
+      background:radial-gradient(circle at top, #1e1b4b, #0a031f);
+      color:var(--text);
+      scroll-behavior:smooth;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    nav{
+      position:sticky;
+      top:0;
+      background:linear-gradient(90deg,#4f46e5,#8b5cf6);
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+      padding:12px;
+      box-shadow:0 3px 12px rgba(0,0,0,0.5);
+      z-index:100;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:500;
+      font-size:15px;
+      padding:6px 10px;
+      border-radius:6px;
+      transition:all 0.3s ease;
+    }
+
+    nav a:hover{
+      background:rgba(255,255,255,0.2);
+      transform:translateY(-2px) scale(1.05);
+    }
+
+    /* HEADER */
+    header{
+      text-align:center;
+      padding:60px 12px 40px;
+      background:linear-gradient(270deg,#4c1d95,#5b21b6,#3730a3);
+      background-size:600% 600%;
+      color:white;
+      animation:gradientMove 8s ease infinite alternate;
+    }
+
+    header h1{
+      margin:0;
+      font-size:32px;
+      letter-spacing:-0.5px;
+    }
+
+    header p{
+      margin:8px 0 0;
+      font-size:16px;
+      opacity:0.9;
+    }
+
+    /* HOME SECTION */
+    .home-container{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:40px;
+      flex-wrap:wrap;
+    }
+
+    .profile-pic{
+      width:170px;
+      height:170px;
+      border-radius:50%;
+      border:3px solid var(--accent);
+      box-shadow:0 0 25px rgba(139,92,246,0.7);
+      object-fit:cover;
+      margin-left:20px;
+      animation:glowPulse 3s infinite alternate;
+    }
+
+    @keyframes glowPulse{
+      from{box-shadow:0 0 15px rgba(139,92,246,0.5);}
+      to{box-shadow:0 0 30px rgba(139,92,246,0.9);}
+    }
+
+    .home-info{
+      max-width:550px;
+      animation:fadeInUp 1.5s ease;
+    }
+
+    .home-info p{ line-height:1.6; }
+
+    /* SECTION CARD */
+    section{
+      max-width:900px;
+      margin:50px auto;
+      padding:24px;
+      background:linear-gradient(145deg,#1e1b4b,#2e1065);
+      border-radius:var(--radius);
+      box-shadow:0 10px 25px rgba(0,0,0,0.5);
+      border:1px solid var(--border);
+      transform:scale(0.95) translateY(30px);
+      opacity:0;
+      transition:all 0.8s ease;
+    }
+
+    section.visible{
+      opacity:1;
+      transform:scale(1) translateY(0);
+    }
+
+    h2{
+      color:var(--accent);
+      margin-top:0;
+      margin-bottom:16px;
+      font-weight:600;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:10px;
+      color:var(--text);
+    }
+
+    th,td{
+      padding:10px;
+      border-bottom:1px solid var(--border);
+      text-align:left;
+      transition:background 0.3s;
+    }
+
+    th{
+      background:linear-gradient(90deg,#4f46e5,#8b5cf6);
+      color:#f9fafb;
+    }
+
+    tr:hover td{ background:#312e81; }
+
+    ul{ margin:8px 0 16px 20px; }
+
+    blockquote{
+      margin:10px 0;
+      padding:12px 20px;
+      border-left:4px solid var(--accent);
+      background:#2e1065;
+      border-radius:6px;
+      font-style:italic;
+    }
+
+    /* FORM KONTAK */
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    input,textarea{
+      padding:10px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      font-size:15px;
+      resize:none;
+      background:#0f0a28;
+      color:var(--text);
+      transition:0.2s;
+    }
+
+    input:focus,textarea:focus{
+      border-color:var(--accent);
+      outline:none;
+      box-shadow:0 0 0 3px rgba(139,92,246,0.3);
+    }
+
+    button{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+      width:max-content;
+    }
+
+    button:hover{
+      filter:brightness(1.2);
+      transform:scale(1.05);
+    }
+
+    footer{
+      background:linear-gradient(90deg,#4c1d95,#3730a3);
+      color:#e2e8f0;
+      text-align:center;
+      padding:18px;
+      margin-top:60px;
+      font-size:14px;
+    }
+
+    /* ANIMASI */
+    @keyframes gradientMove{
+      0%{background-position:0% 50%;}
+      100%{background-position:100% 50%;}
+    }
+
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:768px){
+      .home-container{
+        flex-direction:column;
+        text-align:center;
+      }
+      .profile-pic{
+        margin-left:0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#pendidikan">Pendidikan</a>
+    <a href="#jadwal">Jadwal</a>
+    <a href="#aktivitas">Aktivitas</a>
+    <a href="#info">Informasi</a>
+    <a href="#skill">Skill</a>
+    <a href="#kritik">Kritik & Saran</a>
+  </nav>
+
+  <!-- ===== HEADER ===== -->
+  <header id="home">
+    <h1>Profil Mahasiswa</h1>
+    <p>Kevin Risky Brilianto — Universitas Amikom Purwokerto</p>
+  </header>
+
+  <!-- ===== HOME ===== -->
+  <section>
+    <h2>Home</h2>
+    <div class="home-container">
+      <img src="kevin.jpeg" alt="Foto Kevin Risky Brilianto" class="profile-pic" />
+      <div class="home-info">
+        <p><strong>Nama:</strong> Kevin Risky Brilianto</p>
+        <p><strong>Tempat, Tanggal Lahir:</strong> Cilacap, 30 Juni 2006</p>
+        <p><strong>Alamat:</strong> Bancarkembar, Purwokerto Utara</p>
+        <p><strong>Deskripsi:</strong><br>
+          Saya adalah Mahasiswa Universitas Amikom Purwokerto, Program Studi Sistem Informasi, Fakultas Ilmu Komputer. 
+          Saya berusia 19 tahun.<br>
+          Fakta pribadi: Saya adalah fans Barcelona sejak 2011 saat saya berusia 5 tahun.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PENDIDIKAN ===== -->
+  <section id="pendidikan">
+    <h2>Pendidikan</h2>
+    <table>
+      <thead><tr><th>Jenjang</th><th>Nama Sekolah</th><th>Tahun Selesai</th></tr></thead>
+      <tbody>
+        <tr><td>SD</td><td>SD Negeri 1 Bajing</td><td>2018</td></tr>
+        <tr><td>SMP</td><td>SMP Negeri 1 Kroya</td><td>2021</td></tr>
+        <tr><td>MA</td><td>MAN 3 Cilacap</td><td>2024</td></tr>
+        <tr><td>Universitas</td><td>Universitas Amikom Purwokerto</td><td>Sedang berjalan (2024–sekarang)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== AKTIVITAS ===== -->
+  <section id="aktivitas">
+    <h2>Aktivitas</h2>
+    <ul>
+      <li>Panitia <strong>PPM (Penggalian Potensi Mahasiswa)</strong> Amikom Purwokerto 2025.</li>
+      <li>Mengikuti turnamen <strong>sepak bola</strong> dan <strong>futsal</strong> antar pelajar dan desa.</li>
+      <li><strong>Part-time</strong> di kafe sebagai staff pelayanan.</li>
+      <li><strong>Runner event konser Dewa 19</strong>.</li>
+    </ul>
+    <blockquote>
+      Dari berbagai kegiatan tersebut, saya belajar tentang kerja sama tim, tanggung jawab, dan manajemen waktu antara kuliah serta aktivitas di luar kampus.
+    </blockquote>
+  </section>
+
+  <!-- ===== INFORMASI TAMBAHAN ===== -->
+  <section id="info">
+    <h2>Informasi Tambahan</h2>
+    <ul>
+      <li><strong>Motto:</strong> "Jadilah yang berbeda, jadilah yang baru."</li>
+    </ul>
+    <p><strong>Kontak:</strong></p>
+    <ul>
+      <li><strong>Telepon:</strong> 0838-2659-7385</li>
+      <li><strong>Email:</strong> briliantokevin@gmail.com</li>
+      <li><strong>Instagram:</strong> <a href="https://www.instagram.com/kevinriskyb" target="_blank">@kevinriskyb</a></li>
+    </ul>
+  </section>
+
+  <!-- ===== SKILL ===== -->
+  <section id="skill">
+    <h2>Skill</h2>
+    <ul>
+      <li>HTML, CSS, dan JavaScript</li>
+      <li>Dasar Pemrograman Web (PHP & MySQL)</li>
+      <li>Desain Antarmuka dengan Figma</li>
+      <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+      <li>Komunikasi & Teamwork</li>
+    </ul>
+  </section>
+
+  <!-- ===== KOTAK KRITIK ===== -->
+  <section id="kritik">
+    <h2>Kotak Kritik & Saran</h2>
+    <p>Silakan kirim kritik atau saran untuk saya:</p>
+    <form onsubmit="event.preventDefault(); alert('Pesan berhasil dikirim (simulasi)!');">
+      <input type="text" placeholder="Nama Anda" required />
+      <input type="email" placeholder="Email Anda" required />
+      <textarea rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    &copy; 2025 | Kevin Risky Brilianto — Pemrograman Web — Universitas Amikom Purwokerto
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add("visible"); }
+      });
+    }, {threshold:0.2});
+    sections.forEach(s=>observer.observe(s));
+  </script>
+</body>
+</html>
